@@ -1,0 +1,51 @@
+.appLayout{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+  font-family:"Orbit", sans-serif;
+  line-height:1;
+  > nav.bg-body-tertiary{
+    padding:2rem 0;
+    background-color:var(--background-colo) !important;
+  }
+  .netflexLogo{
+    width: clamp(90px, 10vw, 150px);
+    height:auto;
+    margin:0 2.5vw 0 0;
+    a{
+      display: block;
+      width: 100%;
+      height:auto;
+      line-height:0;
+      aspect-ratio: 100 / 26;
+      svg{
+        fill:var(--key-color);
+      }
+    }
+  }
+  #navbarScroll{
+    a{
+      text-transform:uppercase;
+      color:var(--main-font-color);
+    }
+  }
+
+  .form-control{
+    width:75%;
+    height:40px;
+    background-color:transparent;
+    color:var(--main-font-color);
+    border-color:rgba(255,255,255,0.3);
+    &::placeholder {
+      color:rgba(255,255,255,0.5);
+    }
+  }
+  .btn{
+    width:25%;
+    height:40px;
+    background:var(--key-color);
+    border:none;
+    line-height:1;
+    border-radius:0;
+  }
+}
