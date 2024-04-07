@@ -8,18 +8,19 @@
     padding:2rem 0;
     background-color:var(--background-colo) !important;
   }
-  .netflexLogo{
-    width: clamp(90px, 10vw, 150px);
+  .logo{
+    width: clamp(100px, 10vw, 150px);
     height:auto;
     margin:0 2.5vw 0 0;
     a{
       display: block;
       width: 100%;
-      height:auto;
+      height:100%;
       line-height:0;
-      aspect-ratio: 100 / 26;
-      svg{
-        fill:var(--key-color);
+      img{
+        width:100%;
+        height:auto;
+        aspect-ratio: 100 / 39;
       }
     }
   }
