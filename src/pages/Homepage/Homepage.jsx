@@ -1,5 +1,6 @@
 import React from 'react';
-import Banner from './components/Banner/Banner';
+import TopBanner from './components/Banner/TopBanner';
+import IntroBanner from './components/Banner/IntroBanner';
 
 // 1. 배너
 //    - popular 영화를 들고와서 첫번째 아이템을 보여주자!
@@ -10,7 +11,8 @@ import Banner from './components/Banner/Banner';
 const Homepage = () => {
   return (
     <div>
-      <Banner />
+      <TopBanner />
+      <IntroBanner />
     </div>
   )
 }

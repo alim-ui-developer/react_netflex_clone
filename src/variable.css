@@ -1,7 +1,12 @@
-/* color variable */
 :root{
+  /* layout */
+  --max-width:1400px;
+
+  /* color */
   --background-color: #000;
   --main-font-color:#fff;
+  --sub-font-color:#c1c1c1;
   /* --key-color:#E50914; */
   --key-color:#795dfb;
+  --point-color:#ffd246;
 }
