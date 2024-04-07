@@ -50,7 +50,7 @@ const PopularMovieSlide = () => {
       </Container>
       <Carousel
         infinite={true}
-        // autoPlay={true}
+        autoPlay={true}
         centerMode={true}
         itemClass="movie-slider p-1"
         containerClass="carousel-container"

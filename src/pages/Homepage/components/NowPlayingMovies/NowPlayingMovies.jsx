@@ -1,10 +1,10 @@
 import React from 'react';
 import { FadeLoader } from 'react-spinners';
 import Alert from 'react-bootstrap/Alert';
-import { usePopularPersonsQuery } from '../../../../hooks/usePopularPersons';
+import { useNowPlayingMoviesQuery } from '../../../../hooks/useNowPlayingMovies';
 
-const PopularPersonInterview = () => {
-  const { data, isLoading, isError, error } = usePopularPersonsQuery();
+const NowPlayingMovies = () => {
+  const { data, isLoading, isError, error } = useNowPlayingMoviesQuery();
   
   if(isLoading) {
     return <div className="loadingSpinner"><FadeLoader color="#795dfb" /></div>
@@ -13,11 +13,13 @@ const PopularPersonInterview = () => {
     return <Alert variant='danger'>{error.message}</Alert>
   }
 
-  console.log(data);
+  console.log("MMM", data);
 
   return (
-    <div>{data.results[4].name}</div>
+    <>
+      <p>현재 상영중</p>
+    </>
   )
 }
 
-export default PopularPersonInterview
+export default NowPlayingMovies

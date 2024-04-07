@@ -16,9 +16,7 @@ const MovieCard = ({movie, rank}) => {
         </div>
         <ul className='genre'>
           {movie.genre_ids.map((id) => 
-            <li>
-              #{id}
-            </li>
+            <li>#{id}</li>
           )}
         </ul>
         
