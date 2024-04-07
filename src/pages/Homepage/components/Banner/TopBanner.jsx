@@ -24,7 +24,6 @@ const Banner = () => {
     >
       <Container className='topBannerArea'>
         <div className='text-white textBox'>
-          {/*  */}
           <h1 className='pick'>Today's Pick!</h1>
           <h2>{data?.results[0].title}</h2>
           <h3 className='screen_out'>평점</h3>

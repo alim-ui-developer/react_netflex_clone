@@ -3,14 +3,14 @@ import api from '../utils/api';
 
 const lang = '?language=ko-KR'; // 언어설정 추가
 
-const fetchPopularMovies = () => {
-  return api.get(`/movie/popular${lang}`);
+const fetchPopularPersons = () => {
+  return api.get(`/person/popular${lang}`);
 }
 
-export const usePopuralMoviesQuery = () => {
+export const usePopularPersonsQuery = () => {
   return useQuery({
-    queryKey: ['movie-popular'],
-    queryFn: fetchPopularMovies,
+    queryKey: ['person-popular'],
+    queryFn: fetchPopularPersons,
     select: (result) => result.data
   })
 }
