@@ -1,6 +1,7 @@
 import React from 'react';
 import './PopularMovieSlide.style.css';
 import { FadeLoader } from 'react-spinners';
+import { Container }  from 'react-bootstrap';
 import { usePopuralMoviesQuery } from '../../../../hooks/usePopularMovies';
 import Alert from 'react-bootstrap/Alert';
 import Carousel from "react-multi-carousel";
@@ -9,18 +10,23 @@ import MovieCard from '../MovieCard/MovieCard';
 
 const responsive = {
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 5,
-    slidesToSlide: 5
+    breakpoint: { max: 3000, min: 1401 },
+    items: 7,
+    slidesToSlide: 2
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 3,
-    slidesToSlide: 3
+    breakpoint: { max: 1400, min: 769 },
+    items: 4,
+    slidesToSlide: 2
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 768, min: 577 },
     items: 2,
+    slidesToSlide: 1
+  },
+  s_mobile: {
+    breakpoint: { max: 576, min: 0 },
+    items: 1,
     slidesToSlide: 1
   }
 };
@@ -38,11 +44,13 @@ const PopularMovieSlide = () => {
   console.log(data);
 
   return (
-    <section>
-      <h3>놓칠 수 없는 요즘 핫한 영화🔥</h3>
+    <section className="popularMoviesSlide">
+      <Container fluid>
+        <h3>놓칠 수 없는 요즘 핫한 영화🔥</h3>
+      </Container>
       <Carousel
         infinite={true}
-        autoPlay={true}
+        // autoPlay={true}
         centerMode={true}
         itemClass="movie-slider p-1"
         containerClass="carousel-container"

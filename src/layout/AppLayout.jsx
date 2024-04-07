@@ -38,6 +38,9 @@ const AppLayout = () => {
       </Container>
       {/* react ver.6부터 추가된 Outlet은 router안에 있는 자손들을 갖고 오도록 도와준다 */}
       <Outlet />
+      <footer>
+        <address>&copy; The Movies 2024 All rights reserved.</address>
+      </footer>
     </>
   );
 }

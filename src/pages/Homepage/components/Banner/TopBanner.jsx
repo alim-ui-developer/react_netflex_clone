@@ -19,7 +19,7 @@ const Banner = () => {
     <article
       className='topBanner'
       style={{
-        backgroundImage: `url("https://media.themoviedb.org/t/p/w533_and_h300_bestv2${data.results[0].poster_path}")`
+        backgroundImage: `url("https://media.themoviedb.org/t/p/w1920_and_h800_bestv2${data.results[0].poster_path}")`
       }}
     >
       <Container className='topBannerArea'>
@@ -27,7 +27,7 @@ const Banner = () => {
           <h1 className='pick'>Today's Pick!</h1>
           <h2>{data?.results[0].title}</h2>
           <h3 className='screen_out'>평점</h3>
-          <p className='voteCount'>총 {data?.results[0].vote_count}명의 관람객들이 평균 <em>{data?.results[0].vote_average}점</em>의 점수를 주었어요.</p>
+          <p className='voteCount'>총 {data?.results[0].vote_count}명의 관람객들이 평균 <em>{data?.results[0].vote_average.toFixed(1)}점</em>의 점수를 주었어요.</p>
           <h3 className='screen_out'>영화 정보</h3>
           <p className='discription'>{data?.results[0].overview}</p>
             <Link path="/" className='btn_mainBannerPickLink'>보러가기</Link>
