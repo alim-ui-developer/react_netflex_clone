@@ -4,6 +4,7 @@ import IntroBanner from './components/Banner/IntroBanner';
 import PopularMovieSlide from './components/MainMovieSliders/PopularMovieSlide';
 import TopRatedMovieSlide from './components/MainMovieSliders/TopRatedMoviesSlide';
 import UpComingMoviesSlide from './components/MainMovieSliders/UpComingMoviesSlide';
+import FunnyVote from './components/Vote/FunnyVote';
 
 // 1. 배너
 //    - popular 영화를 들고와서 첫번째 아이템을 보여주자!
@@ -15,10 +16,11 @@ const Homepage = () => {
   return (
     <div>
       <TopBanner />
-      <IntroBanner />
       <PopularMovieSlide />
+      <FunnyVote />
       <TopRatedMovieSlide />
       <UpComingMoviesSlide />
+      <IntroBanner />
     </div>
   )
 }

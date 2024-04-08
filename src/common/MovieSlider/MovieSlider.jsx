@@ -6,7 +6,6 @@ import "react-multi-carousel/lib/styles.css";
 import MovieCard from '../MovieCard/MovieCard';
 
 const MovieSlider = ({title, movies, responsive, isRank, isUpComing}) => {
-  console.log(movies)
   return (
     <section className="MoviesSlider">
       <Container fluid>
