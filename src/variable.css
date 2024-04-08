@@ -3,7 +3,8 @@
   --max-width:1400px;
 
   /* color */
-  --background-color: #000;
+  --main-background-color: #000;
+  --sub-background-color:#2b2929;
   --main-font-color:#fff;
   --sub-font-color:#c1c1c1;
   /* --key-color:#E50914; */
