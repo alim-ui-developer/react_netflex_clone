@@ -24,7 +24,7 @@
       content:'';
       width:80px;
       height:40px;
-      background:url('../../../../assets/theMoviesLogo.png') 50% 50% no-repeat;
+      background:url('./../../assets/theMoviesLogo.png') 50% 50% no-repeat;
       background-size:100% auto;
       filter:grayscale(1);
       opacity:0.2;
