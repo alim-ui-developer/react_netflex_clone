@@ -42,7 +42,6 @@ const MovieCard = ({movie, rank, isUpComing}) => {
             <p className='adultlabel'>청소년관람불가</p>
           }
         </div>
-        {showGenre(movie.genre_ids)}
         <ul className='genre'>
           {showGenre(movie.genre_ids).map((id) => 
             <li>#{id}</li>
