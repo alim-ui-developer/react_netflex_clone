@@ -1,5 +1,6 @@
 import React from 'react';
 import './MovieCard.style.css';
+import { useMovieGerneQuery } from '../../hooks/useMovieGenre';
 
 const transformToDateForm = (date) => {
 	let yyyy = date.substring(0, 4);
@@ -10,6 +11,18 @@ const transformToDateForm = (date) => {
 }
 
 const MovieCard = ({movie, rank, isUpComing}) => {
+  const {data: genreData} = useMovieGerneQuery(); // data:이름 << data를 이름으로 재정의하겠다는 뜻
+  // 장르의 id값과 key값을 맵핑시켜준다
+  const showGenre = (genreIdList) => {
+    if(!genreData) return []; // 장르 데이터가 없으면 보여주지 않는다
+    const genreNameLiist = genreIdList.map((id) => {
+      const genreObj = genreData.find((genre) => genre.id === id);
+      return genreObj.name;
+    })
+
+    return genreNameLiist;
+  }
+
   return (
     <div className='movieCard' style={{ backgroundImage:`url(https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie.poster_path})` }}>
       {rank && 
@@ -29,8 +42,9 @@ const MovieCard = ({movie, rank, isUpComing}) => {
             <p className='adultlabel'>청소년관람불가</p>
           }
         </div>
+        {showGenre(movie.genre_ids)}
         <ul className='genre'>
-          {movie.genre_ids.map((id) => 
+          {showGenre(movie.genre_ids).map((id) => 
             <li>#{id}</li>
           )}
         </ul>
