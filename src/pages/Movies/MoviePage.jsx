@@ -108,7 +108,7 @@ const MoviePage = () => {
               <h3>filter</h3>
               <ul className="filters">
                 {genreButtonArr.map((genreId, index) => 
-                  <li 
+                  <li
                     key={`filterButton${index}`} 
                     className={isActive === index ? 'active' : ''}
                     onClick={() => filterButtonActive(index)}

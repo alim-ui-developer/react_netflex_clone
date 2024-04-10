@@ -4,10 +4,12 @@
   .filterArea{
     color:white;
     .filters{
+      display:flex;flex-wrap: wrap;
+      gap:10px;
       margin:0;
       padding:0;
       li{
-        margin-bottom:1rem;
+        margin:0;
         &.active{
           button{
             background:var(--button-hover-color);
@@ -27,16 +29,36 @@
       justify-content: space-between;
       margin-bottom:2rem;
       .btn_filterReset{
-        width:120px;
+        width:15%;
+        min-width: 150px;
       }
       select{
         width:15%;
+        min-width: 150px;
       }
     }
     .pagenationBox{
       display: flex;
       justify-content: center;
       margin-top:5rem;
+    }
+  }
+}
+
+@media screen and (max-width:767px){
+  .moviePageArea{
+    max-width:var(--max-width);
+    margin:0 auto;
+    .filterArea{
+      color:white;
+      padding-bottom:2rem;
+      border-bottom:1px solid rgba(255,255,255,0.2);
+      margin-bottom:2rem;
+      .filters{
+        li{
+          width:calc((100% - 10px) / 2);
+        }
+      }
     }
   }
 }
