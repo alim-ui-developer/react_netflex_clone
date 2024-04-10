@@ -1,0 +1,42 @@
+.moviePageArea{
+    max-width:var(--max-width);
+    margin:0 auto;
+  .filterArea{
+    color:white;
+    .filters{
+      margin:0;
+      padding:0;
+      li{
+        margin-bottom:1rem;
+        &.active{
+          button{
+            background:var(--button-hover-color);
+          }
+        }
+        button{
+          width:100%;
+          height:50px;
+        }
+      }
+      
+    }
+  }
+  .resultArea{
+    .sortingBox{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom:2rem;
+      .btn_filterReset{
+        width:120px;
+      }
+      select{
+        width:15%;
+      }
+    }
+    .pagenationBox{
+      display: flex;
+      justify-content: center;
+      margin-top:5rem;
+    }
+  }
+}

@@ -1,15 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import { Container, Form, Nav, Navbar}  from 'react-bootstrap';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import './AppLayout.style.css';
 import logo  from '../assets/theMoviesLogo.png'
 
 const AppLayout = () => {
+  const [ keyword, setKeyword ] = useState('');
+  const navigate = useNavigate();
+  
+  const searchByKeyword = (evnet) => {
+    evnet.preventDefault();
+    // url 바꿔주기
+    navigate(`/movies?q=${keyword}`);
+    // 검색 결과 나온 후 검색창 입력 값 비우기
+    setKeyword("");
+  }
   return (
-    <>
-      <Container fluid className='appLayout'>
-        <Navbar expand="lg" data-bs-theme="dark" className="bg-body-tertiary">
+    <section className='appLayout'>
+      <Navbar expand="lg" fixed="top" data-bs-theme="dark" className="bg-body-tertiary">
+        <Container fluid>
           <h1 className='logo'>
             <Link to='/'>
               <img src={logo} alt="The Movies" />
@@ -22,26 +32,28 @@ const AppLayout = () => {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="#action1">Movies</Nav.Link>
+              <Nav.Link href="movies">Movies</Nav.Link>
             </Nav>
-            <Form className="d-flex">
+            <Form className="d-flex" onSubmit={searchByKeyword}>
               <Form.Control
                 type="search"
                 placeholder="we love movie!"
                 className="me-2"
                 aria-label="Search"
+                value={ keyword }
+                onChange={(event) => setKeyword(event.target.value)}
               />
               <Button>검색</Button>
             </Form>
           </Navbar.Collapse>
-        </Navbar>
-      </Container>
+        </Container>
+      </Navbar>
       {/* react ver.6부터 추가된 Outlet은 router안에 있는 자손들을 갖고 오도록 도와준다 */}
       <Outlet />
       <footer>
         <address>&copy; The Movies 2024 All rights reserved.</address>
       </footer>
-    </>
+    </section>
   );
 }
 

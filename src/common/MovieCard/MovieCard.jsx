@@ -1,26 +1,20 @@
 import React from 'react';
 import './MovieCard.style.css';
 import { useMovieGerneQuery } from '../../hooks/useMovieGenre';
-
-const transformToDateForm = (date) => {
-	let yyyy = date.substring(0, 4);
-	let mm = date.substring(5, 7);
-	let dd = date.substring(8, 10);
-    
-	return `${yyyy}년 ${(mm < 10 ? mm.slice(1,2) : mm)}월 ${(dd < 10 ? dd.slice(1,2) : dd)}일`;
-}
+import transformToDateForm from '../../utils/transformToDateForm';
 
 const MovieCard = ({movie, rank, isUpComing}) => {
   const {data: genreData} = useMovieGerneQuery(); // data:이름 << data를 이름으로 재정의하겠다는 뜻
+  
   // 장르의 id값과 key값을 맵핑시켜준다
   const showGenre = (genreIdList) => {
     if(!genreData) return []; // 장르 데이터가 없으면 보여주지 않는다
-    const genreNameLiist = genreIdList.map((id) => {
+    const genreNameList = genreIdList.map((id) => {
       const genreObj = genreData.find((genre) => genre.id === id);
       return genreObj.name;
     })
 
-    return genreNameLiist;
+    return genreNameList;
   }
 
   return (
@@ -34,7 +28,7 @@ const MovieCard = ({movie, rank, isUpComing}) => {
           {isUpComing ? 
             <p>{transformToDateForm(movie.release_date)} 개봉</p> :
             <>
-              <p>⭐{movie.vote_average.toFixed(1)}</p>
+              {movie.vote_average > 0 && <p>⭐{movie.vote_average.toFixed(1)}</p>}
               <p>🙂{Math.round(movie.popularity).toLocaleString('ko-KR')}</p>
             </>
           }
@@ -44,7 +38,7 @@ const MovieCard = ({movie, rank, isUpComing}) => {
         </div>
         <ul className='genre'>
           {showGenre(movie.genre_ids).map((id) => 
-            <li>#{id}</li>
+            <li key={id}>#{id}</li>
           )}
         </ul>
         

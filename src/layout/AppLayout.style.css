@@ -1,19 +1,22 @@
 .appLayout{
   width:100%;
+  min-height:100vh;
   font-family:'Spoqa Han Sans Neo', sans-serif;
   line-height:1;
+  padding-top:65px;
+  box-sizing:border-box;
   > nav.bg-body-tertiary{
-    position:sticky;
-    left:0;
-    top:0;
-    width:100%;
-    max-width:var(--max-width);
-    margin:0 auto;
-    padding:1rem 0;
-    background-color:var(--background-colo) !important;
+    min-width:320px;
+    padding:0.75rem 0;
+    background-color:var(--main-background-color) !important;
+    .container-fluid{
+      width:100%;
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
   }
   .logo{
-    width: clamp(80px, 100vw, 100px);
+    width:clamp(80px, 10vw, 85px);
     height:auto;
     margin:0 2.5vw 0 0;
     a{
