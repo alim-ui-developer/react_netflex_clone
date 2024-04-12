@@ -1,5 +1,6 @@
 import React from 'react';
 import './MovieCard.style.css';
+import { useNavigate } from 'react-router-dom';
 import { useMovieGerneQuery } from '../../hooks/useMovieGenre';
 import transformToDateForm from '../../utils/transformToDateForm';
 
@@ -17,32 +18,41 @@ const MovieCard = ({movie, rank, isUpComing}) => {
     return genreNameList;
   }
 
+  // 각 영화의 id에 맞는 상세 페이지로 이동
+  const navigate = useNavigate();
+  const goToMovieDetailPage = (id) => {
+    navigate(`/movies/${id}`);
+  }
+
   return (
-    <div className='movieCard' style={{ backgroundImage:`url(https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie.poster_path})` }}>
-      {rank && 
-        <h4 className='ranking'>{rank}</h4>
-      }
-      <div className='overlay'>
-        <h5>{movie.title}</h5>
-        <div className="info">
-          {isUpComing ? 
-            <p>{transformToDateForm(movie.release_date)} 개봉</p> :
-            <>
-              {movie.vote_average > 0 && <p>⭐{movie.vote_average.toFixed(1)}</p>}
-              <p>🙂{Math.round(movie.popularity).toLocaleString('ko-KR')}</p>
-            </>
-          }
-          {movie.adult && 
-            <p className='adultlabel'>청소년관람불가</p>
-          }
+    <div
+      className='movieCard'
+      style={{ backgroundImage:`url(https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie.poster_path})` }}
+      onClick={() => goToMovieDetailPage(movie.id)}
+    >
+        {rank && 
+          <h4 className='ranking'>{rank}</h4>
+        }
+        <div className='overlay'>
+          <h5>{movie.title}</h5>
+          <div className="info">
+            {isUpComing ? 
+              <p>{transformToDateForm(movie.release_date)} 개봉</p> :
+              <>
+                {movie.vote_average > 0 && <p>⭐{movie.vote_average.toFixed(1)}</p>}
+                <p>🙂{Math.round(movie.popularity).toLocaleString('ko-KR')}</p>
+              </>
+            }
+            {movie.adult && 
+              <p className='adultlabel'>청소년관람불가</p>
+            }
+          </div>
+          <ul className='genre'>
+            {showGenre(movie.genre_ids).map((id) => 
+              <li key={id}>#{id}</li>
+            )}
+          </ul>
         </div>
-        <ul className='genre'>
-          {showGenre(movie.genre_ids).map((id) => 
-            <li key={id}>#{id}</li>
-          )}
-        </ul>
-        
-      </div>
     </div>
   )
 }
