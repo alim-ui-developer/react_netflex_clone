@@ -1,0 +1,33 @@
+.collectionLink{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: 320px;
+  margin:4rem 0 6rem;
+  background-size:100% auto;
+  background-position:50% 20%;
+  cursor: pointer;
+  text-align:center;
+  aspect-ratio: 100 / 45;
+  transition:all linear 200ms;
+  h4{
+    font-size: clamp(28px, 8vw, 44px);
+    font-weight: 500;
+    color:var(--main-font-color);
+    text-shadow:0 0 15px rgba(0,0,0,0.7);
+  }
+  p{
+    margin:0;
+    font-size: clamp(14px, 5vw, 22px);
+    font-weight: 300;
+    color:var(--main-font-color);
+    text-shadow:0 0 15px rgba(0,0,0,0.7);
+  }
+  @media(hover: hover) and (pointer: fine) {
+    &:hover{
+      filter: contrast(1.2);
+      background-size:102% auto;
+    }
+  }
+}

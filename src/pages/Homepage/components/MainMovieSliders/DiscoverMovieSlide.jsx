@@ -1,22 +1,26 @@
 import React from 'react';
 import './DiscoverMovieSlide.style.css';
-import { FadeLoader } from 'react-spinners';
 import { useMovieDiscoverQuery } from '../../../../hooks/useMovieDiscover';
-import Alert from 'react-bootstrap/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
+import Alert from '@mui/material/Alert';
 import transformToDateForm from '../../../../utils/transformToDateForm';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import MovieSlider from '../../../../common/MovieSlider/MovieSlider';
+import MovieSliderPosterType from '../../../../common/MovieSlider/MovieSliderPosterType';
 import { topRatedMovieresponsive } from '../../../../constants/responsive';
 
 const DiscoverMovieSlide = ({genreId, title}) => {
-  const { data, isLoading, isError, error } = useMovieDiscoverQuery(true, genreId);
+  const { data, isLoading, isError, error } = useMovieDiscoverQuery(false, genreId);
 
   if(isLoading) {
-    return <div className="loadingSpinner"><FadeLoader color="#795dfb" /></div>
+    return (
+      <div className="loadingSpinner">
+        <CircularProgress sx={{color: '#795dfb', animationDuration: '600ms'}} />
+      </div>
+    )
   }
   if(isError) {
-    return <Alert variant='danger'>{error.message}</Alert>
+    return <Alert severity="error">{error.message}</Alert>
   }
 
  const responsive = {
@@ -26,10 +30,8 @@ const DiscoverMovieSlide = ({genreId, title}) => {
     },
   };
 
-  console.log(data.results)
-
   return (
-    <MovieSlider title={title} movies={data.results} isRank={false} isUpComing={false} responsive={topRatedMovieresponsive}/>
+    <MovieSliderPosterType title={title} movies={data.results} isRank={false} isUpComing={false} responsive={topRatedMovieresponsive}/>
     // ~~디자인 새로 작업 중~~
     // <Carousel
     //   infinite={true}

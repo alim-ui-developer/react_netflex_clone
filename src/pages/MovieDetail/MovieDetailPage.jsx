@@ -1,32 +1,44 @@
 import React from 'react'
 import './MovieDetailPage.style.css';
-import { FadeLoader } from 'react-spinners';
-import Alert from 'react-bootstrap/Alert';
 import { useMovieDetailPagesQuery } from '../../hooks/useMovieDetailPages';
+import CircularProgress from '@mui/material/CircularProgress';
+import Alert from '@mui/material/Alert';
 import { useParams } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
+import Container from '@mui/material/Container';
 import MovieDetailInfo from './components/MovieDetailInfo';
+import CollectionLink from './components/CollectionLink';
+import Similar from './components/Similar';
 import Recommendations from './components/Recommendations';
+import Reviews from './components/Reviews';
 
 const MovieDetailPage = () => {
   const params = useParams();
-  const movieId = params.id;
+  const movieId = params.movieId;
   const { data, isLoading, isError, error } = useMovieDetailPagesQuery({movieId});
 
+  console.log(data)
   if(isLoading) {
-    return <div className="loadingSpinner"><FadeLoader color="#795dfb" /></div>
+    return (
+      <div className="loadingSpinner">
+        <CircularProgress sx={{color: '#795dfb', animationDuration: '600ms'}} />
+      </div>
+    )
   }
   if(isError) {
-    return <Alert variant='danger'>{error.message}</Alert>
+    return <Alert severity="error">{error.message}</Alert>
   }
+
   return (
-    <Container fluid>
-      <section className='movieDetailPageArea'>
-        <MovieDetailInfo movie={data} />
+    <section className='movieDetailPage'>
+      <MovieDetailInfo movie={data} />
+      {data.belongs_to_collection && <CollectionLink movie={data} />} 
+      <Container maxWidth="xl">
+        <Similar movie={data} />
         <Recommendations movie={data} />
-        {/* 리뷰 - 더보기, 접기 기능 */}
-      </section>    
-    </Container>
+        <Reviews movie={data} />
+      </Container>
+  </section>
+
   )
 }
 

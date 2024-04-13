@@ -34,7 +34,6 @@
     z-index:2;
     display:flex;
     align-items: flex-end;
-    max-width:var(--max-width);
     height:100%;
     min-height: 60vh;
     margin:0 auto;
@@ -69,7 +68,7 @@
       font-size:clamp(12px, 100vw, 14px);
       line-height:1.5;
       word-break:keep-all;
-      color:rgba(255,255,255,0.6)
+      color:var(--sub-font-color);
     }
     .btn_mainBannerPickLink{
       display:flex;
@@ -84,9 +83,11 @@
       text-decoration:none;
       box-sizing:border-box;
       transition:all linear 200ms;
-      &:hover{
-        background:var(--key-color);
-        color:var(--main-font-color);
+      @media(hover: hover) and (pointer: fine) {
+        &:hover{
+          background:var(--key-color);
+          color:var(--main-font-color);
+        }
       }
     }
   }

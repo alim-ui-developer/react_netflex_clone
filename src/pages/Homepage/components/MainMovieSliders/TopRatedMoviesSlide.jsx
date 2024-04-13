@@ -1,22 +1,26 @@
 import React from 'react';
-import { FadeLoader } from 'react-spinners';
 import { useTopRatedMoviesQuery } from '../../../../hooks/useTopRatedMovies';
-import Alert from 'react-bootstrap/Alert';
-import MovieSlider from '../../../../common/MovieSlider/MovieSlider';
+import CircularProgress from '@mui/material/CircularProgress';
+import Alert from '@mui/material/Alert';
+import MovieSliderPosterType from '../../../../common/MovieSlider/MovieSliderPosterType';
 import { topRatedMovieresponsive } from '../../../../constants/responsive';
 
 const TopRatedMovieSlide = () => {
   const { data, isLoading, isError, error } = useTopRatedMoviesQuery();
 
   if(isLoading) {
-    return <div className="loadingSpinner"><FadeLoader color="#795dfb" /></div>
+    return (
+      <div className="loadingSpinner">
+        <CircularProgress sx={{color: '#795dfb', animationDuration: '600ms'}} />
+      </div>
+    )
   }
   if(isError) {
-    return <Alert variant='danger'>{error.message}</Alert>
+    return <Alert severity="error">{error.message}</Alert>
   }
 
   return (
-    <MovieSlider title={'세월을 뛰어넘는 명작✨'} movies={data.results} isRank={false} isUpComing={false} responsive={topRatedMovieresponsive}/>
+    <MovieSliderPosterType title={'세월을 뛰어넘는 명작✨'} movies={data.results} isRank={false} isUpComing={false} responsive={topRatedMovieresponsive}/>
   )
 }
 

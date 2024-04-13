@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import Button from 'react-bootstrap/Button';
-import { Container, Form, Nav, Navbar}  from 'react-bootstrap';
+import Container from '@mui/material/Container';
+import { Button, Form, Nav, Navbar}  from 'react-bootstrap';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import './AppLayout.style.css';
-import logo  from '../assets/theMoviesLogo.png'
+import logo  from '../assets/theMoviesLogo.png';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const AppLayout = () => {
   const [ keyword, setKeyword ] = useState('');
@@ -16,10 +18,11 @@ const AppLayout = () => {
     // 검색 결과 나온 후 검색창 입력 값 비우기
     setKeyword("");
   }
+
   return (
     <section className='appLayout'>
       <Navbar expand="lg" fixed="top" data-bs-theme="dark" className="bg-body-tertiary">
-        <Container fluid>
+        <Container maxWidth="xl" className='navbar-expand-lg'>
           <h1 className='logo'>
             <Link to='/'>
               <img src={logo} alt="The Movies" />
@@ -32,9 +35,10 @@ const AppLayout = () => {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="movies">Movies</Nav.Link>
+              {/* <Nav.Link href="movies">Movies</Nav.Link> */}
+              <Link to='/movies'>Movies</Link>
             </Nav>
-            <Form className="d-flex" onSubmit={searchByKeyword}>
+            <Form className="searchBox" onSubmit={searchByKeyword}>
               <Form.Control
                 type="search"
                 placeholder="we love movie!"
@@ -43,7 +47,9 @@ const AppLayout = () => {
                 value={ keyword }
                 onChange={(event) => setKeyword(event.target.value)}
               />
-              <Button type="submit">검색</Button>
+              <Button type="submit">
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </Button>
             </Form>
           </Navbar.Collapse>
         </Container>

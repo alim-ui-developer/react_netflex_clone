@@ -11,7 +11,7 @@ export const useGetMovieRecommendationsQuery = ({ movieId }) => {
   return useQuery({
     queryKey: ['movie-recommendation', { movieId }],
     queryFn: () => fetchGetMovieRecommendations({ movieId }),
-    select: (reusult) => reusult.data
+    select: (result) => result.data
   })
 
 }

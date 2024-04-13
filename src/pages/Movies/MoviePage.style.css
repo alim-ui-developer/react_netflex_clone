@@ -1,5 +1,4 @@
 .moviePageArea{
-    max-width:var(--max-width);
     margin:0 auto;
   .filterArea{
     color:white;
@@ -48,7 +47,6 @@
 
 @media screen and (max-width:767px){
   .moviePageArea{
-    max-width:var(--max-width);
     margin:0 auto;
     .filterArea{
       color:white;

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './MoviePage.style.css';
-import { FadeLoader } from 'react-spinners';
-import Alert from 'react-bootstrap/Alert';
 import { useMovieGerneQuery } from '../../hooks/useMovieGenre';
 import { useSearchMovieQuery } from '../../hooks/useSearchMovie';
+import CircularProgress from '@mui/material/CircularProgress';
+import Alert from '@mui/material/Alert';
 import { useSearchParams } from 'react-router-dom';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-import MovieCard from '../../common/MovieCard/MovieCard';
+import Container from '@mui/material/Container';
+import { Row, Col, Button, Form } from 'react-bootstrap';
+import MovieCardPosterType from '../../common/MovieCard/MovieCardPosterType';
 import ReactPaginate from 'react-paginate';
 import NoSearchResults from '../../common/NoSearchResults/NoSearchResults';
 
@@ -27,7 +28,6 @@ const MoviePage = () => {
   const { data, isLoading, isError, error} = useSearchMovieQuery({ keyword, page });
   const {data: genreData} = useMovieGerneQuery();
 
-
   const [ movieList, setMovieList ] = useState([]);
 
   // console.log(movieList)
@@ -39,17 +39,14 @@ const MoviePage = () => {
   const dataSortByPopularity = () => {
     const sortedData = [...movieList].sort((a, b) => b.popularity - a.popularity);
     setMovieList(sortedData);
-    console.log("dataSortByPopularity", sortedData)
   }
 
   // 최신순 정렬
     const dataSortByLatest = () => {
       const sortedData = [...movieList].sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
       setMovieList(sortedData);
-      console.log("dataSortByLatest", movieList);
     }
   
-
   // 장르별 정렬
   const dataSortByGenre = (genreId) => {
     const genreMovieList = data.results.filter((movie) => movie.genre_ids.includes(genreId));
@@ -94,14 +91,18 @@ const MoviePage = () => {
   }
 
   if(isLoading) {
-    return <div className="loadingSpinner"><FadeLoader color="#795dfb" /></div>
+    return (
+      <div className="loadingSpinner">
+        <CircularProgress sx={{color: '#795dfb', animationDuration: '600ms'}} />
+      </div>
+    )
   }
   if(isError) {
-    return <Alert variant='danger'>{error.message}</Alert>
+    return <Alert severity="error">{error.message}</Alert>
   }
 
   return (
-    <Container fluid>
+    <Container maxWidth="xl">
       <section className='moviePageArea'>
           <Row>
             <Col lg={2} md={4} s={6} xs={12} className='filterArea'>
@@ -133,7 +134,7 @@ const MoviePage = () => {
                   <Row>
                     {movieList.map((movie) => (
                       <Col key={movie.id} lg={3} md={6} xs={12}>
-                        <MovieCard movie={movie} />
+                        <MovieCardPosterType movie={movie} />
                       </Col>
                     ))}
                   </Row>

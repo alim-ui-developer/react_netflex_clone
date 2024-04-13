@@ -1,22 +1,26 @@
 import React from 'react';
-import { FadeLoader } from 'react-spinners';
 import { useUpComingMoviesQuery } from '../../../../hooks/useUpComingMovies';
-import Alert from 'react-bootstrap/Alert';
-import MovieSlider from '../../../../common/MovieSlider/MovieSlider';
+import CircularProgress from '@mui/material/CircularProgress';
+import Alert from '@mui/material/Alert';
+import MovieSliderPosterType from '../../../../common/MovieSlider/MovieSliderPosterType';
 import { upComingMovieresponsive } from '../../../../constants/responsive';
 
 const UpComingMoviesSlide = () => {
   const { data, isLoading, isError, error } = useUpComingMoviesQuery();
 
   if(isLoading) {
-    return <div className="loadingSpinner"><FadeLoader color="#795dfb" /></div>
+    return (
+      <div className="loadingSpinner">
+        <CircularProgress sx={{color: '#795dfb', animationDuration: '600ms'}} />
+      </div>
+    )
   }
   if(isError) {
-    return <Alert variant='danger'>{error.message}</Alert>
+    return <Alert severity="error">{error.message}</Alert>
   }
 
   return (
-    <MovieSlider title={'눈여겨볼 상영 예정작💕'} movies={data.results} isUpComing={true} responsive={upComingMovieresponsive}/>
+    <MovieSliderPosterType title={'눈여겨볼 상영 예정작💕'} movies={data.results} isUpComing={true} responsive={upComingMovieresponsive}/>
   )
 }
 

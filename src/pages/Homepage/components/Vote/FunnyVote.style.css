@@ -75,9 +75,11 @@
           opacity:0;
           transition:all linear 100ms;
         }
-        &:hover{
-          &::before, &::after{
-            opacity:0.8;
+        @media(hover: hover) and (pointer: fine) {
+          &:hover{
+            &::before, &::after{
+              opacity:0.8;
+            }
           }
         }
         img{
@@ -98,7 +100,7 @@
           }
         }
         word-break: keep-all;
-        color: rgba(255, 255, 255, 0.6);
+        color: var(--sub-font-color);
       }
       .counterBox{
         font-family: "Anton", sans-serif;

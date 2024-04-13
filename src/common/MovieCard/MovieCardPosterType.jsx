@@ -1,11 +1,11 @@
 import React from 'react';
-import './MovieCard.style.css';
+import './MovieCardPosterType.style.css';
 import { useNavigate } from 'react-router-dom';
 import { useMovieGerneQuery } from '../../hooks/useMovieGenre';
 import transformToDateForm from '../../utils/transformToDateForm';
 
-const MovieCard = ({movie, rank, isUpComing}) => {
-  const {data: genreData} = useMovieGerneQuery(); // data:이름 << data를 이름으로 재정의하겠다는 뜻
+const MovieCardPosterType = ({ movie, rank, isUpComing }) => {
+  const { data: genreData } = useMovieGerneQuery(); // data:이름 << data를 이름으로 재정의하겠다는 뜻
   
   // 장르의 id값과 key값을 맵핑시켜준다
   const showGenre = (genreIdList) => {
@@ -20,13 +20,13 @@ const MovieCard = ({movie, rank, isUpComing}) => {
 
   // 각 영화의 id에 맞는 상세 페이지로 이동
   const navigate = useNavigate();
-  const goToMovieDetailPage = (id) => {
-    navigate(`/movies/${id}`);
+  const goToMovieDetailPage = (movieId) => {
+    navigate(`/movies/${movieId}`);
   }
 
   return (
     <div
-      className='movieCard'
+      className='MovieCardPosterType'
       style={{ backgroundImage:`url(https://media.themoviedb.org/t/p/w300_and_h450_bestv2/${movie.poster_path})` }}
       onClick={() => goToMovieDetailPage(movie.id)}
     >
@@ -57,4 +57,4 @@ const MovieCard = ({movie, rank, isUpComing}) => {
   )
 }
 
-export default MovieCard
+export default MovieCardPosterType

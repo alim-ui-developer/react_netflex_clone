@@ -1,0 +1,41 @@
+.reviews{
+  font-family:'Spoqa Han Sans Neo', sans-serif;
+  padding:5% 0;
+  h3{
+    font-size: clamp(22px, 5vw, 28px);
+    font-weight:300;
+    color:var(--main-font-color);
+    margin-bottom:25px;
+    span{
+      font-size: clamp(16px, 3vw, 20px);
+      font-weight:300;
+      color:var(--sub-font-color);
+    }
+    background-color: transparent;
+  }
+
+  .reviewTitle{
+    display:flex;
+    justify-content: space-between;
+    width:calc(100% - 20px);
+    h4{
+      font-family:'Spoqa Han Sans Neo', sans-serif;
+      margin:0 50px 0 0;
+      font-size: clamp(16px, 6vw, 20px);
+      color:var(--key-color);
+    }
+    p{
+      font-family:'Spoqa Han Sans Neo', sans-serif;
+      margin:0;
+      font-size: clamp(13px, 4vw, 15px);
+      color:var(--sub-font-color); 
+      word-break:keep-all;
+    }
+    @media screen and (max-width: 992px){
+      display:block;
+      h4{
+        margin:0 0 5px 0;
+      }
+    }
+  }
+}                     

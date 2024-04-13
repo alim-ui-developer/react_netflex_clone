@@ -1,0 +1,175 @@
+.MovieDetailInfo{
+  position:relative;
+  width:100%;
+  min-height:80vh;
+  margin-bottom:3rem;
+  font-family:'Spoqa Han Sans Neo', sans-serif;
+  background-position:-20% 50%;
+  background-size: auto 100%;
+  div[class^="MuiContainer"]{
+    position:relative;
+    display: flex;
+    align-items: center;
+    height:100%;
+    min-height:80vh;
+  }
+  .flexBox{
+    padding:5rem 0 7rem;
+  }
+  .bgImage{
+    position:relative;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100%;
+    z-index:-1;
+    img{
+      display:block;
+      width:100%;
+      height:100%;
+      opacity: 0.8;
+      object-fit: cover;
+      transform: translateX(20vw);
+    }
+    .cover{
+      position:absolute;
+      top:0;
+      left:0;
+      display:block;
+      width:100%;
+      height:100%;
+      transform: translateX(-50%);
+      background:linear-gradient(to right, var(--main-background-color) 0%, transparent 100%);
+      z-index:1;  
+      transform: translateX(calc(20vw - 50px));    
+    }
+  }
+  .poster{
+    display:none;
+    width:200px;
+    height:auto;
+    img{
+      width:100%;
+      height:auto;
+    }
+  }
+  .tagline{
+    font-size: clamp(16px, 10vw, 18px);
+    line-height:1.25;
+    color: var(--main-font-color);
+    margin:0 0 0.7rem 0;
+  }
+  .title{
+    font-size: clamp(50px, 10vw, 80px);
+    line-height:1.15;
+    font-weight: 300;
+    color: var(--main-font-color);
+  }
+  .genres{
+    margin:0 0 0.5rem 0;
+    div[class^="MuiChip"]{
+      margin:0 6px 6px 0;
+      border-color:var(--sub-font-color);
+      color:var(--sub-font-color);
+    }
+  }
+  .creditsBox{
+    margin:3.5rem 0 0 0;
+    h4, p, li{
+      font-size: clamp(13px, 10vw, 15px);
+      line-height:1.25;
+      font-weight:300;
+      color: var(--main-font-color);
+      margin:0;
+    }
+    h4{
+      width:60px;
+      font-weight:500;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+    div{
+      display:flex;
+      
+      margin-top:0.8rem;
+    }
+    .cast{
+      ul{
+        margin:0;
+        padding:0;
+        li{
+          margin-bottom:0.4rem;
+        }
+      }
+    }
+  }
+  .dataBox{
+    display:flex;
+    flex-wrap: wrap;
+    margin:0.3rem 0 0 0;
+    h4, p{
+      font-size: clamp(13px, 10vw, 15px);
+      line-height:1.25;
+      font-weight:300;
+      color: var(--sub-font-color);
+      margin:0;
+    }
+    > div{
+      display: flex;
+      gap:5px;
+      &:not(:last-of-type){
+        position:relative;
+        padding-right:17px;
+        &::after{
+          position:absolute;
+          top:50%;
+          right:7px;
+          display:inline-block;
+          content:"";
+          width:3px;
+          height:3px;
+          border-radius:10px;
+          background:var(--sub-font-color);
+          transform:translateY(-50%);
+        }
+      }
+    }
+  }
+  .overview{
+    width:100%;
+    max-width:800px;
+    font-size: clamp(13px, 10vw, 15px);
+    line-height:1.35;
+    font-weight:300;
+    color: var(--main-font-color);
+    margin:2rem 0 0 0;
+    word-break:keep-all;
+  }
+}
+
+@media screen and (max-width: 992px){
+  .MovieDetailInfo{
+    overflow:hidden;
+    .flexBox{
+      padding:7rem 0 5rem;
+    }
+    .poster{
+      display:block;
+    }
+    .bgImage{
+      img{
+        transform: translateX(0);
+        filter: blur(10px);
+      }
+      .cover{
+        transform: translateX(0);
+        background:rgba(0,0,0,0.5)
+      }
+    }
+    .creditsBox{
+      margin:3rem 0 0 0;
+    }
+  }
+}
+
