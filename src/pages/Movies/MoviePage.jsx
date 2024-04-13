@@ -106,7 +106,7 @@ const MoviePage = () => {
       <section className='moviePageArea'>
           <Row>
             <Col lg={2} md={4} s={6} xs={12} className='filterArea'>
-              <h3>filter</h3>
+              <h3 className='screen_out'>장르별 필터</h3>
               <ul className="filters">
                 {genreButtonArr.map((genreId, index) => 
                   <li
